@@ -63,6 +63,8 @@ struct sitl_fdm {
         struct vector3f_array points;
         struct float_array ranges;
     } scanner;
+
+    struct vector3f_array points;
 };
 
 // number of rc output channels
