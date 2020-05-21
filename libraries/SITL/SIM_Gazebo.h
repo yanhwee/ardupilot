@@ -20,6 +20,9 @@
 
 #include "SIM_Aircraft.h"
 #include <AP_HAL/utility/Socket.h>
+#include <AP_Math/AP_Math.h>
+
+#define RANGEFINDER_SAMPLES 8
 
 namespace SITL {
 
@@ -61,6 +64,7 @@ private:
       double velocity_xyz[3];
       double position_xyz[3];
       double rangefinder;
+      Vector3f rangefinder360[RANGEFINDER_SAMPLES];
     };
 
     void recv_fdm(const struct sitl_input &input);
