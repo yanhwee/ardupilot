@@ -67,8 +67,6 @@ private:
       Vector3f rangefinder360[RANGEFINDER_SAMPLES];
     };
 
-    Vector3f rangefinder360[RANGEFINDER_SAMPLES];
-
     void recv_fdm(const struct sitl_input &input);
     void send_servos(const struct sitl_input &input);
     void drain_sockets();

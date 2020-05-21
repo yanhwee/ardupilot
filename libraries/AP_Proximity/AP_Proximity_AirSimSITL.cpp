@@ -17,7 +17,6 @@
 #if CONFIG_HAL_BOARD == HAL_BOARD_SITL
 #include "AP_Proximity_AirSimSITL.h"
 #include <stdio.h>
-#include <iostream>
 
 extern const AP_HAL::HAL& hal;
 
@@ -28,7 +27,6 @@ extern const AP_HAL::HAL& hal;
 void AP_Proximity_AirSimSITL::update(void)
 {
     SITL::vector3f_array &points = sitl->state.scanner.points;
-    SITL::vector3f_array &points2 = sitl->state.points;
     if (points.length == 0) {
         set_status(AP_Proximity::Status::NoData);
         return;
@@ -39,13 +37,10 @@ void AP_Proximity_AirSimSITL::update(void)
     memset(_distance_valid, 0, sizeof(_distance_valid));
 
     for (uint16_t i=0; i<points.length; i++) {
-        // Vector3f &point = points.data[i];
-        Vector3f &point = points2.data[i];
-        // std::cout << i << " " << point.x << " " << point.y << " " << point2.x << " " << point2.y << "\n";
+        Vector3f &point = points.data[i];
         if (point.is_zero()) {
             continue;
         }
-        continue;
         const float angle_deg = wrap_360(degrees(atan2f(point.y, point.x)));
         const uint8_t sector = convert_angle_to_sector(angle_deg);
 
