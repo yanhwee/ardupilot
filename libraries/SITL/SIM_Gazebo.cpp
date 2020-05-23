@@ -123,11 +123,8 @@ void Gazebo::recv_fdm(const struct sitl_input &input)
 
     range = pkt.rangefinder;
 
-    scanner.points.length = RANGEFINDER_SAMPLES;
+    // scanner.points.length = RANGEFINDER_SAMPLES;
     // scanner.points.data = pkt.rangefinder360;
-
-    Vector3f ranges[] { {10, 10, 0}, {10, 10, 0}, {10, 10, 0}, {10, 10, 0}, {10, 10, 0}, {10, 10, 0}, {10, 10, 0}, {10, 10, 0} };
-    scanner.points.data = ranges;
 
     // auto-adjust to simulation frame rate
     time_now_us += static_cast<uint64_t>(deltat * 1.0e6);
